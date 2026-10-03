@@ -2,15 +2,12 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Air & Noise Pollution Survey</title>
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -46,7 +43,7 @@
             background: white;
             padding: 35px;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
         }
 
         .section-title {
@@ -70,7 +67,8 @@
 
         input[type="text"],
         input[type="email"],
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 13px;
             border: 1px solid #ccc;
@@ -80,7 +78,8 @@
         }
 
         input:focus,
-        textarea:focus {
+        textarea:focus,
+        select:focus {
             border-color: #176b87;
         }
 
@@ -128,15 +127,21 @@
             background: #0f5067;
         }
 
+        button:disabled {
+            background: #7a9ca8;
+            cursor: not-allowed;
+        }
+
         #successMessage {
             display: none;
             text-align: center;
             margin-top: 20px;
-            padding: 15px;
+            padding: 20px;
             background: #e7f7ed;
             color: #16733b;
             border-radius: 8px;
             font-weight: bold;
+            font-size: 18px;
         }
 
         .footer {
@@ -146,982 +151,582 @@
             margin-top: 25px;
         }
 
+        #errorMessage {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fdeaea;
+            color: #b42318;
+            border-radius: 8px;
+            font-weight: bold;
+        }
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- HEADER -->
 
-<!-- HEADER -->
+    <div class="header">
 
-<div class="header">
+        <h1>Air & Noise Pollution Survey</h1>
 
-    <h1>Air & Noise Pollution Survey</h1>
-
-    <p>
-        Community Engagement Project (CEP)
-    </p>
-
-</div>
-
-
-
-<div class="container">
-
-
-    <div class="note">
-
-        <strong>About this survey:</strong><br>
-
-        This survey is conducted to understand air and noise pollution
-        levels, their major sources, effects on the community and possible
-        solutions suggested by local residents.
+        <p>
+            Community Engagement Project (CEP)
+        </p>
 
     </div>
 
 
+    <div class="container">
 
-    <form id="pollutionForm">
+        <div class="note">
 
+            <strong>About this survey:</strong><br>
 
-        <!-- PERSONAL INFORMATION -->
-
-        <h2 class="section-title">
-            Personal Information
-        </h2>
-
-
-        <!-- NAME -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                1. Full Name
-
-                <span class="required">*</span>
-
-            </label>
-
-            <input
-                type="text"
-                name="name"
-                placeholder="Enter your full name"
-                required
-            >
+            This survey is conducted to understand air and noise pollution
+            levels, their major sources, effects on the community and possible
+            solutions suggested by local residents.
 
         </div>
 
 
+        <form id="pollutionForm">
 
-        <!-- EMAIL -->
+            <!-- PERSONAL INFORMATION -->
 
-        <div class="question">
+            <h2 class="section-title">
+                Personal Information
+            </h2>
 
-            <label class="main-label">
 
-                2. Gmail ID
+            <!-- NAME -->
 
-                <span class="required">*</span>
+            <div class="question">
 
-            </label>
+                <label class="main-label">
+                    1. Full Name <span class="required">*</span>
+                </label>
 
-            <input
-                type="email"
-                name="email"
-                placeholder="example@gmail.com"
-                required
-            >
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required>
 
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    2. Gmail ID <span class="required">*</span>
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="example@gmail.com"
+                    required>
+
+            </div>
+
+
+            <!-- ADDRESS -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    3. Address / Locality <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    name="address"
+                    placeholder="Enter your locality / area"
+                    required>
+
+            </div>
+
+
+            <!-- SURVEY -->
+
+            <h2 class="section-title">
+                Air & Noise Pollution Survey
+            </h2>
+
+
+            <!-- QUESTION 4 -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    4. How would you rate the level of air pollution in your area?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="option">
+                    <input type="radio" name="airPollution" value="Low" required>
+                    Low
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="airPollution" value="Moderate">
+                    Moderate
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="airPollution" value="High">
+                    High
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="airPollution" value="Very High">
+                    Very High
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 5 -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    5. How would you rate the level of noise pollution in your area?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="option">
+                    <input type="radio" name="noisePollution" value="Low" required>
+                    Low
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="noisePollution" value="Moderate">
+                    Moderate
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="noisePollution" value="High">
+                    High
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="noisePollution" value="Very High">
+                    Very High
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 6 -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    6. What is the major source of air pollution in your locality?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="option">
+                    <input type="radio" name="airSource" value="Vehicle emissions" required>
+                    Vehicle emissions
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="airSource" value="Construction activities">
+                    Construction activities
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="airSource" value="Industrial activities">
+                    Industrial activities
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="airSource" value="Garbage burning">
+                    Garbage burning
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="airSource" value="Other">
+                    Other
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 7 -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    7. What is the major source of noise pollution in your locality?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="option">
+                    <input type="radio" name="noiseSource" value="Traffic" required>
+                    Traffic
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="noiseSource" value="Construction">
+                    Construction
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="noiseSource" value="Industrial activities">
+                    Industrial activities
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="noiseSource" value="Loudspeakers / Events">
+                    Loudspeakers / Events
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="noiseSource" value="Other">
+                    Other
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 8 -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    8. How often do you experience problems because of air or noise pollution?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="option">
+                    <input type="radio" name="pollutionProblem" value="Frequently" required>
+                    Frequently
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="pollutionProblem" value="Sometimes">
+                    Sometimes
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="pollutionProblem" value="Rarely">
+                    Rarely
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="pollutionProblem" value="Never">
+                    Never
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 9 -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    9. Do you think pollution has increased in your area in recent years?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="option">
+                    <input type="radio" name="pollutionIncrease" value="Yes" required>
+                    Yes
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="pollutionIncrease" value="No">
+                    No
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="pollutionIncrease" value="Not Sure">
+                    Not Sure
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 10 -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    10. Are you satisfied with the measures currently taken to control pollution?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="option">
+                    <input type="radio" name="satisfaction" value="Satisfied" required>
+                    Satisfied
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="satisfaction" value="Somewhat satisfied">
+                    Somewhat satisfied
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="satisfaction" value="Not satisfied">
+                    Not satisfied
+                </div>
+
+                <div class="option">
+                    <input type="radio" name="satisfaction" value="Not sure">
+                    Not sure
+                </div>
+
+            </div>
+
+
+            <!-- COMMUNITY SOLUTIONS -->
+
+            <h2 class="section-title">
+                Community Suggestions & Solutions
+            </h2>
+
+
+            <!-- QUESTION 11 -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    11. Which solutions do you suggest for reducing pollution?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="More trees and green areas">
+                    More trees and green areas
+                </div>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="Better traffic management">
+                    Better traffic management
+                </div>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="Reduce unnecessary honking">
+                    Reduce unnecessary honking
+                </div>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="Control construction dust">
+                    Control construction dust
+                </div>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="Regular industrial monitoring">
+                    Regular industrial monitoring
+                </div>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="Proper garbage disposal">
+                    Proper garbage disposal
+                </div>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="Avoid burning waste">
+                    Avoid burning waste
+                </div>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="Public awareness">
+                    Public awareness programmes
+                </div>
+
+                <div class="option">
+                    <input type="checkbox" name="solutions" value="Control loudspeakers">
+                    Control unnecessary loudspeakers
+                </div>
+
+            </div>
+
+
+            <!-- OWN SUGGESTION -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    12. What is the most important step that should be taken to reduce pollution in your area?
+                </label>
+
+                <textarea
+                    name="importantSuggestion"
+                    placeholder="Write your suggestion..."></textarea>
+
+            </div>
+
+
+            <!-- FEEDBACK -->
+
+            <div class="question">
+
+                <label class="main-label">
+                    13. Additional Feedback / Comments
+                </label>
+
+                <textarea
+                    name="feedback"
+                    placeholder="Share your feedback..."></textarea>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button type="submit" id="submitButton">
+                Submit Survey
+            </button>
+
+        </form>
+
+
+        <div id="successMessage">
+            ✓ Thank you! Your survey response has been recorded successfully.
+        </div>
+
+        <div id="errorMessage">
+            ❌ Response submit nahi hua. Please try again.
         </div>
 
 
-
-        <!-- ADDRESS -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                3. Address / Locality
-
-                <span class="required">*</span>
-
-            </label>
-
-            <input
-                type="text"
-                name="address"
-                placeholder="Enter your locality / area"
-                required
-            >
-
+        <div class="footer">
+            Air & Noise Pollution Mapping | Community Engagement Project
         </div>
-
-
-
-        <!-- SURVEY -->
-
-        <h2 class="section-title">
-
-            Air & Noise Pollution Survey
-
-        </h2>
-
-
-
-        <!-- QUESTION 4 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                4. How would you rate the level of air pollution in your area?
-
-                <span class="required">*</span>
-
-            </label>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airPollution"
-                    value="Low"
-                    required
-                >
-
-                Low
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airPollution"
-                    value="Moderate"
-                >
-
-                Moderate
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airPollution"
-                    value="High"
-                >
-
-                High
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airPollution"
-                    value="Very High"
-                >
-
-                Very High
-
-            </div>
-
-        </div>
-
-
-
-        <!-- QUESTION 5 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                5. How would you rate the level of noise pollution in your area?
-
-                <span class="required">*</span>
-
-            </label>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noisePollution"
-                    value="Low"
-                    required
-                >
-
-                Low
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noisePollution"
-                    value="Moderate"
-                >
-
-                Moderate
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noisePollution"
-                    value="High"
-                >
-
-                High
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noisePollution"
-                    value="Very High"
-                >
-
-                Very High
-
-            </div>
-
-        </div>
-
-
-
-        <!-- QUESTION 6 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                6. What is the major source of air pollution in your locality?
-
-                <span class="required">*</span>
-
-            </label>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airSource"
-                    value="Vehicle emissions"
-                    required
-                >
-
-                Vehicle emissions
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airSource"
-                    value="Construction activities"
-                >
-
-                Construction activities
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airSource"
-                    value="Industrial activities"
-                >
-
-                Industrial activities
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airSource"
-                    value="Garbage burning"
-                >
-
-                Garbage burning
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="airSource"
-                    value="Other"
-                >
-
-                Other
-
-            </div>
-
-        </div>
-
-
-
-        <!-- QUESTION 7 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                7. What is the major source of noise pollution in your locality?
-
-                <span class="required">*</span>
-
-            </label>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noiseSource"
-                    value="Traffic"
-                    required
-                >
-
-                Traffic
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noiseSource"
-                    value="Construction"
-                >
-
-                Construction
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noiseSource"
-                    value="Industrial activities"
-                >
-
-                Industrial activities
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noiseSource"
-                    value="Loudspeakers / Events"
-                >
-
-                Loudspeakers / Events
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="noiseSource"
-                    value="Other"
-                >
-
-                Other
-
-            </div>
-
-        </div>
-
-
-
-        <!-- QUESTION 8 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                8. How often do you experience problems because of air or noise pollution?
-
-                <span class="required">*</span>
-
-            </label>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="pollutionProblem"
-                    value="Frequently"
-                    required
-                >
-
-                Frequently
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="pollutionProblem"
-                    value="Sometimes"
-                >
-
-                Sometimes
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="pollutionProblem"
-                    value="Rarely"
-                >
-
-                Rarely
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="pollutionProblem"
-                    value="Never"
-                >
-
-                Never
-
-            </div>
-
-        </div>
-
-
-
-        <!-- QUESTION 9 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                9. Do you think pollution has increased in your area in recent years?
-
-                <span class="required">*</span>
-
-            </label>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="pollutionIncrease"
-                    value="Yes"
-                    required
-                >
-
-                Yes
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="pollutionIncrease"
-                    value="No"
-                >
-
-                No
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="pollutionIncrease"
-                    value="Not Sure"
-                >
-
-                Not Sure
-
-            </div>
-
-        </div>
-
-
-
-        <!-- QUESTION 10 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                10. Are you satisfied with the measures currently taken to control pollution?
-
-                <span class="required">*</span>
-
-            </label>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="satisfaction"
-                    value="Satisfied"
-                    required
-                >
-
-                Satisfied
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="satisfaction"
-                    value="Somewhat satisfied"
-                >
-
-                Somewhat satisfied
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="satisfaction"
-                    value="Not satisfied"
-                >
-
-                Not satisfied
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="radio"
-                    name="satisfaction"
-                    value="Not sure"
-                >
-
-                Not sure
-
-            </div>
-
-        </div>
-
-
-
-        <!-- COMMUNITY SOLUTIONS -->
-
-        <h2 class="section-title">
-
-            Community Suggestions & Solutions
-
-        </h2>
-
-
-
-        <!-- QUESTION 11 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                11. Which solutions do you suggest for reducing pollution?
-
-                <span class="required">*</span>
-
-            </label>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="More trees and green areas"
-                >
-
-                More trees and green areas
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="Better traffic management"
-                >
-
-                Better traffic management
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="Reduce unnecessary honking"
-                >
-
-                Reduce unnecessary honking
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="Control construction dust"
-                >
-
-                Control construction dust
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="Regular industrial monitoring"
-                >
-
-                Regular industrial monitoring
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="Proper garbage disposal"
-                >
-
-                Proper garbage disposal
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="Avoid burning waste"
-                >
-
-                Avoid burning waste
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="Public awareness"
-                >
-
-                Public awareness programmes
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    name="solutions"
-                    value="Control loudspeakers"
-                >
-
-                Control unnecessary loudspeakers
-
-            </div>
-
-        </div>
-
-
-
-        <!-- QUESTION 12 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                12. What is the most important step that should be taken to reduce pollution in your area?
-
-            </label>
-
-            <textarea
-                name="importantSuggestion"
-                placeholder="Write your suggestion..."
-            ></textarea>
-
-        </div>
-
-
-
-        <!-- QUESTION 13 -->
-
-        <div class="question">
-
-            <label class="main-label">
-
-                13. Additional Feedback / Comments
-
-            </label>
-
-            <textarea
-                name="feedback"
-                placeholder="Share your feedback..."
-            ></textarea>
-
-        </div>
-
-
-
-        <!-- SUBMIT BUTTON -->
-
-        <button type="submit">
-
-            Submit Survey
-
-        </button>
-
-
-    </form>
-
-
-
-    <!-- SUCCESS MESSAGE -->
-
-    <div id="successMessage">
-
-        ✓ Thank you! Your survey response has been recorded.
 
     </div>
 
 
+    <script>
 
-    <div class="footer">
+        /* =====================================================
+           IMPORTANT:
+           Paste your Google Apps Script Web App URL below.
+           ===================================================== */
 
-        Air & Noise Pollution Mapping |
-        Community Engagement Project
-
-    </div>
-
-
-</div>
-
+        const GOOGLE_SCRIPT_URL =
+            "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
 
-<script>
+        const form = document.getElementById("pollutionForm");
+
+        const submitButton =
+            document.getElementById("submitButton");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+        const errorMessage =
+            document.getElementById("errorMessage");
 
 
-/* =========================================================
-   GOOGLE APPS SCRIPT URL
-   =========================================================
+        form.addEventListener("submit", async function (event) {
 
-   IMPORTANT:
-   Replace the text below with the Web App URL
-   that you copied from Google Apps Script.
-
-   ========================================================= */
+            // Stop normal page reload
+            event.preventDefault();
 
 
-const GOOGLE_SCRIPT_URL =
-    "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+            // Hide previous error
+            errorMessage.style.display = "none";
 
 
+            // Disable button while submitting
+            submitButton.disabled = true;
 
-/* =========================================================
-   FORM SUBMISSION
-   ========================================================= */
-
-
-document
-    .getElementById("pollutionForm")
-    .addEventListener("submit", async function(event) {
+            submitButton.textContent = "Submitting...";
 
 
-        /* Stop normal form submission */
+            // Collect form data
+            const data = new FormData(form);
 
-        event.preventDefault();
-
-
-        const form = this;
+            let response = {};
 
 
-        const data = new FormData(form);
+            data.forEach(function (value, key) {
 
+                if (key === "solutions") {
 
-        let response = {};
+                    if (!response[key]) {
+                        response[key] = [];
+                    }
 
+                    response[key].push(value);
 
-        /* Collect all form answers */
+                } else {
 
-        data.forEach((value, key) => {
-
-
-            /* Multiple checkbox answers */
-
-            if (key === "solutions") {
-
-
-                if (!response[key]) {
-
-                    response[key] = [];
+                    response[key] = value;
 
                 }
 
+            });
 
-                response[key].push(value);
 
-
+            // If no solution is selected
+            if (!response.solutions) {
+                response.solutions = [];
             }
 
 
-            /* Normal answers */
+            try {
 
-            else {
+                /*
+                 Send data to Google Apps Script.
+                 no-cors is used because Google Apps Script
+                 does not allow normal browser CORS handling here.
+                */
 
-                response[key] = value;
+                await fetch(GOOGLE_SCRIPT_URL, {"https://script.google.com/macros/s/AKfycby-R_VDgOiTqR1Dmy_I-waVMjVqxFIK8UaYpo4HXf8G_EmZI5S-IYbxlVnLRdPFx3Wx8w/exec"
+
+                    method: "POST",
+
+                    mode: "no-cors",
+
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+
+                    body: JSON.stringify(response)
+
+                });
+
+
+                // Hide form
+                form.style.display = "none";
+
+
+                // Show success message
+                successMessage.style.display = "block";
+
+
+            } catch (error) {
+
+                console.error("Submission error:", error);
+
+
+                // Show error
+                errorMessage.style.display = "block";
+
+
+                // Enable button again
+                submitButton.disabled = false;
+
+                submitButton.textContent = "Submit Survey";
 
             }
 
         });
 
-
-
-        /* =====================================================
-           SEND DATA TO GOOGLE SHEETS
-           ===================================================== */
-
-
-        try {
-
-
-            await fetch(GOOGLE_SCRIPT_URL, {"https://script.google.com/macros/s/AKfycby-R_VDgOiTqR1Dmy_I-waVMjVqxFIK8UaYpo4HXf8G_EmZI5S-IYbxlVnLRdPFx3Wx8w/exec
-
-                method: "POST",
-
-                mode: "no-cors",
-
-                headers: {
-
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
-
-                },
-
-                body: JSON.stringify(response)
-
-            });
-
-
-            /* Hide form */
-
-            form.style.display = "none";
-
-
-            /* Show success message */
-
-            document
-                .getElementById("successMessage")
-                .style.display = "block";
-
-
-        }
-
-
-        catch (error) {
-
-
-            alert(
-                "There was a problem submitting your response. Please try again."
-            );
-
-
-            console.error(error);
-
-
-        }
-
-
-    });
-
-
-</script>
-
+    </script>
 
 </body>
 
